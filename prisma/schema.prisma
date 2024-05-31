@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./db/dev.db"
+}
+
+model Broth {
+  id            Int      @id @default(autoincrement())
+  imageInactive String?
+  imageActive   String?
+  name          String
+  description   String
+  price         Float
+  Orders        Orders[]
+
+  @@map("broths")
+}
+
+model Proteins {
+  id            Int      @id @default(autoincrement())
+  imageInactive String?
+  imageActive   String?
+  name          String
+  description   String
+  price         Float
+  Orders        Orders[]
+
+  @@map("proteins")
+}
+
+model Orders {
+  id         Int      @id @default(autoincrement())
+  created_at DateTime @default(now())
+  proteins   Proteins @relation(fields: [proteinsId], references: [id])
+  broth      Broth    @relation(fields: [brothId], references: [id])
+  proteinsId Int
+  brothId    Int
+
+  @@map("orders")
+}
