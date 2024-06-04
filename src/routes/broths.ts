@@ -11,18 +11,22 @@ export async function brothsRoutes(app: FastifyInstance){
        const createBrothsSchema = z.object({
          name: z.string(),
          description: z.string(),
-         price: z.number()
+         price: z.number(),
+         imageInactive: z.string(),
+         imageActive: z.string()
        })
 
        
-       const {name, description, price} = createBrothsSchema.parse(request.body)
+       const {name, description, price, imageActive, imageInactive} = createBrothsSchema.parse(request.body)
 
        try {
             const newBroths = await prisma.broth.create({
                 data: {
                     name,
                     description,
-                    price
+                    price,
+                    imageActive,
+                    imageInactive
                 }
             })
 
