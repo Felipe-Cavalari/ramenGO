@@ -5,7 +5,7 @@ import { z } from 'zod'
 const envSchema = z.object({
   NODE_ENV: z.enum(['dev', 'test', 'prod']).default('dev'),
   DATABASE_CLIENT: z.enum(['sqlite', 'postgresql']), 
-  PORT: z.coerce.number().default(3333),
+  PORT: z.coerce.number().default(10000),
 })
 
 const _env = envSchema.safeParse(process.env)
