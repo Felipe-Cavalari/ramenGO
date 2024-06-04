@@ -26,9 +26,8 @@ export async function brothsRoutes(app: FastifyInstance){
                 }
             })
 
-            console.log('caldo criado com sucesso')
-            console.log(newBroths)
-            reply.status(201)
+            
+            reply.status(201).send({'message':'successfully created broths'})
        } catch (error) {
             console.log(error)
             reply.status(500).send(error)

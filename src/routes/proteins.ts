@@ -7,7 +7,7 @@ import { z } from "zod";
 // criando rotas para os caldos
 export async function proteinsRoutes(app: FastifyInstance){
     // rota para criar um caldo novo
-    app.post('/', async (request, reply) => {
+    app.post('/',  {preHandler: checkApiKey}, async (request, reply) => {
        const createProteinSchema = z.object({
          name: z.string(),
          description: z.string(),
@@ -26,9 +26,7 @@ export async function proteinsRoutes(app: FastifyInstance){
                 }
             })
 
-            console.log('proteina criado com sucesso')
-            console.log(newBroths)
-            reply.status(201)
+           reply.status(201).send({'message':'successfully created protein'})
        } catch (error) {
             console.log(error)
             reply.status(500).send(error)
@@ -38,7 +36,7 @@ export async function proteinsRoutes(app: FastifyInstance){
 
 
     //rota para listar todos os caldos
-    app.get('/', async (request, reply) => {
+    app.get('/', {preHandler: checkApiKey}, async (request, reply) => {
         const allBroths = await prisma.proteins.findMany()
 
         return reply.status(200).send(allBroths)
