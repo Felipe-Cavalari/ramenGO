@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@fastify/auth':
+        specifier: 4.6.1
+        version: 4.6.1
       '@fastify/cookie':
         specifier: ^9.3.1
         version: 9.3.1
       '@prisma/client':
         specifier: 5.14.0
         version: 5.14.0(prisma@5.14.0)
+      bcryptjs:
+        specifier: 2.4.3
+        version: 2.4.3
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -30,6 +36,9 @@ importers:
       '@rocketseat/eslint-config':
         specifier: ^2.2.2
         version: 2.2.2(eslint@9.3.0)(typescript@5.4.5)
+      '@types/bcryptjs':
+        specifier: 2.4.6
+        version: 2.4.6
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
@@ -346,6 +355,9 @@ packages:
   '@fastify/ajv-compiler@3.5.0':
     resolution: {integrity: sha512-ebbEtlI7dxXF5ziNdr05mOY8NnDiPB1XvAlLHctRt/Rc+C3LCOVW5imUVX+mhvUhnNzmPBHewUkOFgGlCxgdAA==}
 
+  '@fastify/auth@4.6.1':
+    resolution: {integrity: sha512-J/UkZw6EYUX7aXu78YLV1uE1ESbHsGNKxyO+H82ixdC3AnzBT8qeBI6K19mqVHfJTICy5m9uspj7PjC7EvZQ/A==}
+
   '@fastify/cookie@9.3.1':
     resolution: {integrity: sha512-h1NAEhB266+ZbZ0e9qUE6NnNR07i7DnNXWG9VbbZ8uC6O/hxHpl+Zoe5sw1yfdZ2U6XhToUGDnzQtWJdCaPwfg==}
 
@@ -527,6 +539,9 @@ packages:
     resolution: {integrity: sha512-UOo5FdvOL0+eIVTgS4tIdbW+TtnBLWg1YBCcU2KWM7nuNwRz9bksDX1bekJJCpu25N1DVWaCwnT39dVQxzqS8g==}
     cpu: [x64]
     os: [win32]
+
+  '@types/bcryptjs@2.4.6':
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -733,6 +748,9 @@ packages:
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
+  bcryptjs@2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
 
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -2223,6 +2241,11 @@ snapshots:
       ajv-formats: 2.1.1(ajv@8.14.0)
       fast-uri: 2.3.0
 
+  '@fastify/auth@4.6.1':
+    dependencies:
+      fastify-plugin: 4.5.1
+      reusify: 1.0.4
+
   '@fastify/cookie@9.3.1':
     dependencies:
       cookie-signature: 1.2.1
@@ -2390,6 +2413,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.18.0':
     optional: true
+
+  '@types/bcryptjs@2.4.6': {}
 
   '@types/estree@1.0.5': {}
 
@@ -2642,6 +2667,8 @@ snapshots:
   balanced-match@1.0.2: {}
 
   base64-js@1.5.1: {}
+
+  bcryptjs@2.4.3: {}
 
   binary-extensions@2.3.0: {}
 

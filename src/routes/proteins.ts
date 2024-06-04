@@ -5,20 +5,20 @@ import { z } from "zod";
 
 
 // criando rotas para os caldos
-export async function brothsRoutes(app: FastifyInstance){
+export async function proteinsRoutes(app: FastifyInstance){
     // rota para criar um caldo novo
-    app.post('/', {preHandler: checkApiKey} ,async (request, reply) => {
-       const createBrothsSchema = z.object({
+    app.post('/', async (request, reply) => {
+       const createProteinSchema = z.object({
          name: z.string(),
          description: z.string(),
          price: z.number()
        })
 
        
-       const {name, description, price} = createBrothsSchema.parse(request.body)
+       const {name, description, price} = createProteinSchema.parse(request.body)
 
        try {
-            const newBroths = await prisma.broth.create({
+            const newBroths = await prisma.proteins.create({
                 data: {
                     name,
                     description,
@@ -26,7 +26,7 @@ export async function brothsRoutes(app: FastifyInstance){
                 }
             })
 
-            console.log('caldo criado com sucesso')
+            console.log('proteina criado com sucesso')
             console.log(newBroths)
             reply.status(201)
        } catch (error) {
@@ -38,8 +38,8 @@ export async function brothsRoutes(app: FastifyInstance){
 
 
     //rota para listar todos os caldos
-    app.get('/', {preHandler: checkApiKey},async (request, reply) => {
-        const allBroths = await prisma.broth.findMany()
+    app.get('/', async (request, reply) => {
+        const allBroths = await prisma.proteins.findMany()
 
         return reply.status(200).send(allBroths)
     })
