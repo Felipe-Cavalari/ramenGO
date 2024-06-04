@@ -1,10 +1,11 @@
 import { app } from './app'
-import { env } from './env'
+import "dotenv"
 
 app
   .listen({
-    port: env.PORT || 10000,
+    host: '0.0.0.0',
+    port: process.env.PORT,
   })
   .then(() => {
-    console.log('HTTP Server Running')
+    console.log(`HTTP Server Running on port ${process.env.PORT}`)
   } )
