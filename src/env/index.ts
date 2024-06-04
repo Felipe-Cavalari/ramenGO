@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['dev', 'test', 'prod']).default('dev'),
-  DATABASE_CLIENT: z.enum(['sqlite', 'postgresql']), 
+  DATABASE_CLIENT: z.enum(['sqlite', 'postgresql']).default('postgresql'), 
   PORT: z.coerce.number().default(10000),
 })
 
