@@ -11,18 +11,22 @@ export async function proteinsRoutes(app: FastifyInstance){
        const createProteinSchema = z.object({
          name: z.string(),
          description: z.string(),
-         price: z.number()
+         price: z.number(),
+         imageActive: z.string(),
+         imageInactive: z.string()
        })
 
        
-       const {name, description, price} = createProteinSchema.parse(request.body)
+       const {name, description, price, imageActive, imageInactive} = createProteinSchema.parse(request.body)
 
        try {
-            const newBroths = await prisma.proteins.create({
+            await prisma.proteins.create({
                 data: {
                     name,
                     description,
-                    price
+                    price,
+                    imageActive,
+                    imageInactive
                 }
             })
 
